@@ -4,14 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import junit.framework.Assert;
-
 public class CalcPage extends AppiumEnv {
 
 	public CalcPage() {
 		PageFactory.initElements(driver, this);
 	}
-
 
 	@FindBy(id = "com.android.calculator2:id/result")
 	public WebElement result;

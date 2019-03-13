@@ -3,9 +3,7 @@ package mobileweb;
 import java.net.MalformedURLException;
 
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import io.appium.java_client.android.AndroidDriver;
@@ -28,7 +26,7 @@ public class CalcTests extends AppiumEnv {
 		calcPage = new CalcPage();
 	}
 
-	/*@Test
+	@Test
 	public void plus() {
 		calcPage.plus();
 	}
@@ -51,16 +49,16 @@ public class CalcTests extends AppiumEnv {
 	@Test
 	public void clearResult() {
 		for (int i = 1; i <= 10; i++) {
-			System.out.println("Clear times: "+i);
+			System.out.println("Clear times: " + i);
 			calcPage.clearResult();
 		}
-	}*/
-	
+	}
+
 	@Test
 	public void goToHome() {
 		calcPage.goToHome();
 	}
-	
+
 	@AfterClass
 	public void teardown() {
 		if (driver != null) {

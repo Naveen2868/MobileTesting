@@ -12,7 +12,6 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.BeforeClass;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
@@ -73,7 +72,6 @@ public class AppiumEnv {
 		} else if (context.equals("webView")) {
 			capabilities = new DesiredCapabilities();
 			URL url = new URL("http://127.0.0.1:4723/wd/hub");
-			//URL url = new URL(URL);
 			DesiredCapabilities cap = new DesiredCapabilities();
 			cap.setCapability(MobileCapabilityType.DEVICE_NAME, prop.getProperty("deviceName"));
 			cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 120);
@@ -108,7 +106,6 @@ public class AppiumEnv {
 		try {
 			Thread.sleep(1000 * value);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
