@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 13 15:58:13 IST 2019</td>
+<td>Started on:</td><td>Thu Mar 14 11:41:17 IST 2019</td>
 </tr>
-<tr><td>Total time:</td><td>74 seconds (74150 ms)</td>
+<tr><td>Total time:</td><td>51 seconds (51188 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,15 +75,13 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='mobileweb.CalcTests.goToHome()'><b>goToHome</b><br>Test class: mobileweb.CalcTests</td>
-<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+<td title='mobileweb.Appium_01_FacebookLogin.facebookLoginPageCheck()'><b>facebookLoginPageCheck</b><br>Test class: mobileweb.Appium_01_FacebookLogin</td>
+<td><div><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Error attempting to start URI. Original error: Error: Error executing adbExec. Original error: &apos;Command &apos;C\:\\Users\\naleti\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 192.168.230.101\:5555 shell am start -W -a android.intent.action.VIEW -d https\://m.facebook.com com.android.chrome&apos; timed out after 20000ms&apos;. Try to increase the 20000ms adb execution timeout represented by &apos;adbExecTimeout&apos; capability
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
 System info: host: &apos;AIPL-SEZ-LT-60&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_101&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, databaseEnabled: false, desired: {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, deviceName: Google Nexus4, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
-Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
-*** Element info: {Using=id, value=home}
+Capabilities {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, databaseEnabled: false, desired: {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, deviceName: Google Nexus4, newCommandTimeout: 120, noReset: true, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, newCommandTimeout: 120, noReset: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
+Session ID: 11914447-e5d4-4b50-afeb-ef38d48f59ec
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -97,16 +95,9 @@ Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
 	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
 	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
 	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
-	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-	at mobilewebpages.CalcPage.goToHome(CalcPage.java:70)
-	at mobileweb.CalcTests.goToHome(CalcTests.java:61)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)
+	at mobileweb.Appium_01_FacebookLogin.facebookLoginPageCheck(Appium_01_FacebookLogin.java:27)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -131,15 +122,13 @@ Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
 	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:207)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:178)
-</pre></div><a href='#' onClick='toggleBox("stack-trace303240439", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace303240439'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+</pre></div><a href='#' onClick='toggleBox("stack-trace350069300", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace350069300'><pre>org.openqa.selenium.WebDriverException: An unknown server-side error occurred while processing the command. Original error: Error attempting to start URI. Original error: Error: Error executing adbExec. Original error: &apos;Command &apos;C\:\\Users\\naleti\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 192.168.230.101\:5555 shell am start -W -a android.intent.action.VIEW -d https\://m.facebook.com com.android.chrome&apos; timed out after 20000ms&apos;. Try to increase the 20000ms adb execution timeout represented by &apos;adbExecTimeout&apos; capability
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
 System info: host: &apos;AIPL-SEZ-LT-60&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_101&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, databaseEnabled: false, desired: {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, deviceName: Google Nexus4, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
-Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
-*** Element info: {Using=id, value=home}
+Capabilities {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, databaseEnabled: false, desired: {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, deviceName: Google Nexus4, newCommandTimeout: 120, noReset: true, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, newCommandTimeout: 120, noReset: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
+Session ID: 11914447-e5d4-4b50-afeb-ef38d48f59ec
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -153,16 +142,9 @@ Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
 	at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
 	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
 	at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
-	at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-	at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
-	at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-	at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-	at mobilewebpages.CalcPage.goToHome(CalcPage.java:70)
-	at mobileweb.CalcTests.goToHome(CalcTests.java:61)
+	at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+	at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)
+	at mobileweb.Appium_01_FacebookLogin.facebookLoginPageCheck(Appium_01_FacebookLogin.java:27)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -188,8 +170,8 @@ Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:207)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:178)
 </pre></div></td>
-<td>60</td>
-<td>mobileweb.CalcTests@327471b5</td></tr>
+<td>31</td>
+<td>mobileweb.Appium_01_FacebookLogin@6646153</td></tr>
 </table><p>
 </body>
 </html>

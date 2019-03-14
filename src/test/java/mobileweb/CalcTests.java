@@ -3,6 +3,7 @@ package mobileweb;
 import java.net.MalformedURLException;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -26,37 +27,31 @@ public class CalcTests extends AppiumEnv {
 		calcPage = new CalcPage();
 	}
 
-	@Test
+	@Test(priority = 1)
 	public void plus() {
 		calcPage.plus();
 	}
 
-	@Test
+	@Test(priority = 2)
 	public void subtraction() {
 		calcPage.subtraction();
 	}
 
-	@Test
+	@Test(priority = 3)
 	public void devide() {
 		calcPage.devide();
 	}
 
-	@Test
+	@Test(priority = 4)
 	public void multiplication() {
 		calcPage.multiplication();
 	}
 
-	@Test
+	@AfterMethod
 	public void clearResult() {
-		for (int i = 1; i <= 10; i++) {
-			System.out.println("Clear times: " + i);
+		for (int i = 1; i <= 4; i++) {
 			calcPage.clearResult();
 		}
-	}
-
-	@Test
-	public void goToHome() {
-		calcPage.goToHome();
 	}
 
 	@AfterClass

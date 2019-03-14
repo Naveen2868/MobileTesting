@@ -31,24 +31,22 @@ div.shootout {padding:2em;border:3px #4854A8 solid}
 <body>
 <table cellspacing="0" cellpadding="0" class="result">
 <tr><th>Test</th><th class="numi">Methods<br/>Passed</th><th class="numi">Scenarios<br/>Passed</th><th class="numi"># skipped</th><th class="numi"># failed</th><th class="numi">Total<br/>Time</th><th class="numi">Included<br/>Groups</th><th class="numi">Excluded<br/>Groups</th></tr>
-<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">74.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+<tr><td style="text-align:left;padding-right:2em">Default test</td><td class="numi">0</td><td class="numi">0</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">51.2 seconds</td><td class="numi"></td><td class="numi"></td></tr>
 </table>
 <table cellspacing="0" cellpadding="0" class="passed" id="summary">
 <tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
 <tr><th colspan="4">Default test &#8212; failed</th></tr>
-<tr class="failedodd"><td rowspan="1">mobileweb.CalcTests</td><td><a href="#m1"><b>goToHome</b>  </a></td><td class="numi">1</td><td>1552472905534</td><td class="numi">60310</td></tr>
+<tr class="failedodd"><td rowspan="1">mobileweb.Appium_01_FacebookLogin</td><td><a href="#m1"><b>facebookLoginPageCheck</b>  </a></td><td class="numi">1</td><td>1552543892064</td><td class="numi">31596</td></tr>
 </table>
 <h1>Default test</h1>
-<h2 id="m1">mobileweb.CalcTests:goToHome</h2>
+<h2 id="m1">mobileweb.Appium_01_FacebookLogin:facebookLoginPageCheck</h2>
 <div style="padding-left:3em">
-<p>An element could not be located on the page using the given search parameters.
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+<p>An unknown server-side error occurred while processing the command. Original error: Error attempting to start URI. Original error: Error: Error executing adbExec. Original error: &apos;Command &apos;C\:\\Users\\naleti\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe -P 5037 -s 192.168.230.101\:5555 shell am start -W -a android.intent.action.VIEW -d https\://m.facebook.com com.android.chrome&apos; timed out after 20000ms&apos;. Try to increase the 20000ms adb execution timeout represented by &apos;adbExecTimeout&apos; capability
 Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:25:53&apos;
 System info: host: &apos;AIPL-SEZ-LT-60&apos;, ip: &apos;192.168.56.1&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.8.0_101&apos;
 Driver info: io.appium.java_client.android.AndroidDriver
-Capabilities {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, databaseEnabled: false, desired: {appActivity: com.android.calculator2.Cal..., appPackage: com.android.calculator2, appiumVersion: 1.11.1, automationName: Appium, deviceName: Google Nexus4, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
-Session ID: 25b6c336-0c8b-4ea9-a602-caa60ff4d195
-*** Element info: {Using=id, value=home}</p>
+Capabilities {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, databaseEnabled: false, desired: {appActivity: com.google.android.apps.chr..., appPackage: com.android.chrome, deviceName: Google Nexus4, newCommandTimeout: 120, noReset: true, platformName: android, platformVersion: 6.0}, deviceManufacturer: Genymotion, deviceModel: Google Nexus 4, deviceName: 192.168.230.101:5555, deviceScreenSize: 1080x1920, deviceUDID: 192.168.230.101:5555, javascriptEnabled: true, locationContextEnabled: false, networkConnectionEnabled: true, newCommandTimeout: 120, noReset: true, platform: LINUX, platformName: Android, platformVersion: 6.0, takesScreenshot: true, warnings: {}, webStorageEnabled: false}
+Session ID: 11914447-e5d4-4b50-afeb-ef38d48f59ec</p>
 sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 <br/>at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
 <br/>at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
@@ -62,16 +60,9 @@ sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 <br/>at io.appium.java_client.DefaultGenericMobileDriver.execute(DefaultGenericMobileDriver.java:42)
 <br/>at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:1)
 <br/>at io.appium.java_client.android.AndroidDriver.execute(AndroidDriver.java:1)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-<br/>at io.appium.java_client.DefaultGenericMobileDriver.findElement(DefaultGenericMobileDriver.java:62)
-<br/>at io.appium.java_client.AppiumDriver.findElement(AppiumDriver.java:1)
-<br/>at io.appium.java_client.android.AndroidDriver.findElement(AndroidDriver.java:1)
-<br/>at org.openqa.selenium.remote.RemoteWebDriver.findElementById(RemoteWebDriver.java:372)
-<br/>at io.appium.java_client.DefaultGenericMobileDriver.findElementById(DefaultGenericMobileDriver.java:70)
-<br/>at io.appium.java_client.AppiumDriver.findElementById(AppiumDriver.java:1)
-<br/>at io.appium.java_client.android.AndroidDriver.findElementById(AndroidDriver.java:1)
-<br/>at mobilewebpages.CalcPage.goToHome(CalcPage.java:70)
-<br/>at mobileweb.CalcTests.goToHome(CalcTests.java:61)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver.get(RemoteWebDriver.java:277)
+<br/>at org.openqa.selenium.remote.RemoteWebDriver$RemoteNavigation.to(RemoteWebDriver.java:857)
+<br/>at mobileweb.Appium_01_FacebookLogin.facebookLoginPageCheck(Appium_01_FacebookLogin.java:27)
 <br/>25 lines not shown
 </div>
 <p class="totop"><a href="#summary">back to summary</a></p>

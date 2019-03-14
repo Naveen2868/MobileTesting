@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="mobileweb.CalcTests">
+      <class name="mobileweb.Appium_01_FacebookLogin">
         <methods>
-          <include name="goToHome"/>
+          <include name="tearDown"/>
           <include name="beforSetup"/>
-          <include name="teardown"/>
+          <include name="facebookLoginPageCheck"/>
         </methods>
-      </class> <!-- mobileweb.CalcTests -->
+      </class> <!-- mobileweb.Appium_01_FacebookLogin -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

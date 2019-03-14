@@ -3,6 +3,7 @@ package mobilewebpages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class CalcPage extends AppiumEnv {
 
@@ -27,6 +28,7 @@ public class CalcPage extends AppiumEnv {
 		clickOnFunction("add");
 		clickOnDigits(9);
 		waitForSeconds(2);
+		Assert.assertEquals("18", result.getText().trim());
 		System.out.println("Result --> " + result.getText().trim());
 	}
 
@@ -36,6 +38,7 @@ public class CalcPage extends AppiumEnv {
 		clickOnFunction("sub");
 		clickOnDigits(8);
 		waitForSeconds(2);
+		Assert.assertEquals("1", result.getText().trim());
 		System.out.println("Result --> " + result.getText().trim());
 	}
 
@@ -45,6 +48,7 @@ public class CalcPage extends AppiumEnv {
 		clickOnFunction("mul");
 		clickOnDigits(6);
 		waitForSeconds(2);
+		Assert.assertEquals("30", result.getText().trim());
 		System.out.println("Result --> " + result.getText().trim());
 	}
 
@@ -54,23 +58,20 @@ public class CalcPage extends AppiumEnv {
 		clickOnFunction("div");
 		clickOnDigits(5);
 		waitForSeconds(2);
+		Assert.assertEquals("1", result.getText().trim());
 		System.out.println("Result --> " + result.getText().trim());
 	}
 
 	public void goToPreviousAction() {
-		System.out.println("Navigate to previous action");
 		driver.findElementById("com.android.calculator2:id/back").click();
 	}
 
 	public void goToHome() {
-		System.out.println("Navigate to Home");
 		driver.findElementById("home").click();
 	}
 
 	public void clearResult() {
-		System.out.println("Clear the result");
 		driver.findElementById("com.android.calculator2:id/del").click();
-		;
 	}
 
 }

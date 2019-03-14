@@ -1,5 +1,6 @@
 package mobilewebpages;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -52,8 +53,8 @@ public class AppiumEnv {
 	public AndroidDriver<AndroidElement> setUp() throws MalformedURLException {
 
 		String context = prop.getProperty("context");
-		System.out.println("context-------------->>>" + context);
-		System.out.println("Setting up device and desired capabilities");
+		System.out.println("context is ------->>> " + context);
+		System.out.println("Setting up device and desired capabilities for "+context);
 
 		if (context.equals("nativeView")) {
 			capabilities = new DesiredCapabilities();
@@ -84,12 +85,14 @@ public class AppiumEnv {
 
 		} else if (context.equals("hybridView")) {
 			capabilities = new DesiredCapabilities();
+			File file = new File("path of the apk");
 			capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, prop.getProperty("appiumVersion"));
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, prop.getProperty("platformVersion"));
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
 			capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, prop.getProperty("automationName"));
 			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, prop.getProperty("deviceName"));
 			capabilities.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.ANDROID);
+			capabilities.setCapability("app", file.getAbsolutePath());
 			capabilities.setCapability("appPackage", "com.android.calculator2");
 			capabilities.setCapability("appActivity", "com.android.calculator2.Calculator");
 			try {
