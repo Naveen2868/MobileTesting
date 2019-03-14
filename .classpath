@@ -28,5 +28,6 @@
 	<classpathentry kind="lib" path="D:/NewDownloads/jars/poi-ooxml-3.9.jar"/>
 	<classpathentry kind="lib" path="D:/NewDownloads/jars/selenium-server-standalone-3.141.59.jar"/>
 	<classpathentry kind="lib" path="D:/NewDownloads/jars/java-client-7.0.0.jar"/>
+	<classpathentry kind="lib" path="D:/NewDownloads/monte-screen-recorder-0.7.7.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

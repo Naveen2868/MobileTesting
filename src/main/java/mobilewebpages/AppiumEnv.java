@@ -1,5 +1,20 @@
 package mobilewebpages;
 
+import static org.monte.media.FormatKeys.EncodingKey;
+import static org.monte.media.FormatKeys.FrameRateKey;
+import static org.monte.media.FormatKeys.KeyFrameIntervalKey;
+import static org.monte.media.FormatKeys.MIME_AVI;
+import static org.monte.media.FormatKeys.MediaTypeKey;
+import static org.monte.media.FormatKeys.MimeTypeKey;
+import static org.monte.media.VideoFormatKeys.CompressorNameKey;
+import static org.monte.media.VideoFormatKeys.DepthKey;
+import static org.monte.media.VideoFormatKeys.ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE;
+import static org.monte.media.VideoFormatKeys.QualityKey;
+import java.awt.Dimension;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,12 +23,21 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
+import org.apache.commons.io.FileUtils;
+import org.monte.media.Format;
+import org.monte.media.FormatKeys.MediaType;
+import org.monte.media.math.Rational;
+import org.monte.screenrecorder.ScreenRecorder;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import com.qa.utils.SpecializedScreenRecorder;
+import com.qa.utils.TestUtil;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
@@ -27,10 +51,9 @@ public class AppiumEnv {
 	public static AndroidDriver<MobileElement> mdriver = null;
 	public static AppiumDriver<MobileElement> adriver = null;
 	public static WebDriver webdriver;
-
 	public static Properties prop;
+	public ScreenRecorder screenRecorder;
 	public static DesiredCapabilities capabilities;
-
 	public static final String USERNAME = "Naveen2868";
 	public static final String ACCESS_KEY = "a681efcb-9f12-4a3c-b966-735a96c88ef5";
 	public static final String URL = "https://" + USERNAME + ":" + ACCESS_KEY + "@ondemand.saucelabs.com:443/wd/hub";
@@ -53,10 +76,10 @@ public class AppiumEnv {
 	public AndroidDriver<AndroidElement> setUp() throws MalformedURLException {
 
 		String context = prop.getProperty("context");
-		System.out.println("context is ------->>> " + context);
-		System.out.println("Setting up device and desired capabilities for "+context);
+		System.out.println("<---Setting up device and desired capabilities for " + context + " application--->");
 
 		if (context.equals("nativeView")) {
+
 			capabilities = new DesiredCapabilities();
 			capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, prop.getProperty("appiumVersion"));
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, prop.getProperty("platformVersion"));
@@ -71,6 +94,7 @@ public class AppiumEnv {
 				e.printStackTrace();
 			}
 		} else if (context.equals("webView")) {
+
 			capabilities = new DesiredCapabilities();
 			URL url = new URL("http://127.0.0.1:4723/wd/hub");
 			DesiredCapabilities cap = new DesiredCapabilities();
@@ -84,6 +108,7 @@ public class AppiumEnv {
 			driver = new AndroidDriver<AndroidElement>(url, cap);
 
 		} else if (context.equals("hybridView")) {
+
 			capabilities = new DesiredCapabilities();
 			File file = new File("path of the apk");
 			capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, prop.getProperty("appiumVersion"));
@@ -101,7 +126,7 @@ public class AppiumEnv {
 				e.printStackTrace();
 			}
 		}
-		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		return driver;
 	}
 
@@ -131,8 +156,63 @@ public class AppiumEnv {
 		cap.setCapability(MobileCapabilityType.VERSION, version);
 		URL url = new URL(appiumServer);
 		mdriver = new AndroidDriver<MobileElement>(url, cap);
-		mdriver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		mdriver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 
+	}
+
+	public void click(@SuppressWarnings("rawtypes") AndroidDriver driver, int timeout, WebElement ele) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		ele.click();
+	}
+
+	public void sendKeys(@SuppressWarnings("rawtypes") AndroidDriver driver, int timeout, WebElement ele,
+			String value) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		wait.until(ExpectedConditions.elementToBeClickable(ele));
+		ele.sendKeys(value);
+	}
+
+	public void waitForSpecificTime(@SuppressWarnings("rawtypes") AndroidDriver driver, int timeout, WebElement ele) {
+		WebDriverWait wait = new WebDriverWait(driver, timeout);
+		wait.until(ExpectedConditions.visibilityOf(ele));
+	}
+
+	public void takeScreenShots(long ScreenName) throws IOException {
+		File srcFile = driver.getScreenshotAs(OutputType.FILE);
+		File targetFile = new File("D:\\DesktopApplication\\fdsf\\screenshots\\" + ScreenName + ".png");
+		FileUtils.copyFile(srcFile, targetFile);
+	}
+
+	public void startRecording() throws Exception {
+
+		String path = System.getProperty("user.dir") + "\\screenrecordingvideos";
+
+		File file = new File(path);
+
+		// We can use this code for full screen recording only
+		/*
+		 * Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		 * int width = screenSize.width; int height = screenSize.height;
+		 */
+
+		Rectangle captureSize = new Rectangle(0, 0, 440, 768);
+		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
+				.getDefaultConfiguration();
+
+		this.screenRecorder = new SpecializedScreenRecorder(gc, captureSize,
+				new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
+				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+						CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE, DepthKey, 24, FrameRateKey,
+						Rational.valueOf(15), QualityKey, 1.0f, KeyFrameIntervalKey, 15 * 60),
+				new Format(MediaTypeKey, MediaType.VIDEO, EncodingKey, "black", FrameRateKey, Rational.valueOf(30)),
+				null, file, "MyVideo");
+		this.screenRecorder.start();
+
+	}
+
+	public void stopRecording() throws Exception {
+		this.screenRecorder.stop();
 	}
 
 }
