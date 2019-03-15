@@ -9,7 +9,6 @@
 	<url>http://maven.apache.org</url>
 
 	<dependencies>
-
 		<!-- https://mvnrepository.com/artifact/com.github.2gis.winium/winium-webdriver -->
 		<dependency>
 			<groupId>com.github.2gis.winium</groupId>
@@ -44,8 +43,6 @@
 			<version>6.8</version>
 			<scope>test</scope>
 		</dependency>
-
-
 	</dependencies>
 
 </project>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CrossPlatformSuite">
+	<test name="Emulator Test1">
+		<parameter name="device" value="192.168.230.101:5555"></parameter>
+		<parameter name="apppackage" value="com.android.calculator2"></parameter>
+		<parameter name="activity" value="com.android.calculator2.Calculator"></parameter>
+		<parameter name="version" value="6.0"></parameter>
+		<parameter name="appiumServer" value="http://127.0.0.1:4723/wd/hub"></parameter>
+		<classes>
+			<class name="desktop.fdsf.CalcTests" />
+		</classes>
+	</test>
+	<!-- <test name="Emulator Test2">
+		<parameter name="device" value="192.168.230.102:5555"></parameter>
+		<parameter name="apppackage" value="com.android.calculator2"></parameter>
+		<parameter name="activity" value="com.android.calculator2.Calculator"></parameter>
+		<parameter name="version" value="4.1"></parameter>
+		<parameter name="appiumServer" value="http://127.0.0.1:4733/wd/hub"></parameter>
+		<classes>
+			<class name="desktop.fdsf.CalcTests" />
+		</classes>
+	</test> -->
+</suite>
