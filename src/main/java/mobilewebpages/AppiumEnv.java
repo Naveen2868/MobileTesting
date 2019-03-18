@@ -35,6 +35,8 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 
 import com.qa.utils.SpecializedScreenRecorder;
 import com.qa.utils.TestUtil;
@@ -110,24 +112,24 @@ public class AppiumEnv {
 		return driver;
 	}
 
-	// @Parameters({"device","apppackage","activity","version","appiumServer"})
+	//@Parameters({"device","apppackage","activity","version","appiumServer"})
+	//@BeforeClass
 	public void deviceSetUp(String device, String apppackage, String activity, String version, String appiumServer)
 			throws InterruptedException, MalformedURLException, InterruptedException {
 
-		System.out.println("*****************************************************");
-		System.out.println("Setting up device and desired capabilities");
+		String platform = prop.getProperty("context");
+		System.out.println("<---Setting up device and desired capabilities for " + platform + " application--->");
 
-		DesiredCapabilities cap = DesiredCapabilities.android();
-		cap.setCapability(MobileCapabilityType.DEVICE_NAME, device);
-		cap.setCapability(MobileCapabilityType.UDID, device);
-		cap.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 120);
-		cap.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, apppackage);
-		cap.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, activity);
-		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
-		cap.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.ANDROID);
-		cap.setCapability(MobileCapabilityType.VERSION, version);
+		capabilities = new DesiredCapabilities();
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, device);
+		capabilities.setCapability(MobileCapabilityType.UDID, device);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, apppackage);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, activity);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
+		capabilities.setCapability(MobileCapabilityType.VERSION, version);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 120);
 		URL url = new URL(appiumServer);
-		driver = new AndroidDriver<AndroidElement>(url, cap);
+		driver = new AndroidDriver<AndroidElement>(url, capabilities);
 		driver.manage().timeouts().implicitlyWait(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 	}
 

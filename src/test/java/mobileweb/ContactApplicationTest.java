@@ -31,7 +31,6 @@ public class ContactApplicationTest extends AppiumEnv {
 
 	@BeforeClass
 	public void beforSetup() throws MalformedURLException, InterruptedException {
-	
 		mobileDriver = setUp();
 		contactPage = new ContactPage();
 	}
