@@ -50,13 +50,8 @@ public class WhatsAppPage extends AppiumEnv {
 	public WebElement chooseCountryText;
 
 	public void clickOnAlert() throws IOException {
-		waitForSpecificTime(driver, 10, alertTitle);
+		waitForSpecificTime(driver, 10, welcomeToWhatsAppText);
 		takeScreenShots(System.currentTimeMillis());
-		Assert.assertEquals("Alert", alertTitle.getText());
-		if (alertAcceptButton.isDisplayed()) {
-			click(driver, 10, alertAcceptButton);
-			takeScreenShots(System.currentTimeMillis());
-		}
 		Assert.assertEquals("Welcome to WhatsApp", welcomeToWhatsAppText.getText());
 	}
 

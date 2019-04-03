@@ -11,9 +11,11 @@ import static org.monte.media.VideoFormatKeys.DepthKey;
 import static org.monte.media.VideoFormatKeys.ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE;
 import static org.monte.media.VideoFormatKeys.QualityKey;
 
+import java.awt.Dimension;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,12 +33,9 @@ import org.monte.screenrecorder.ScreenRecorder;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 
 import com.qa.utils.SpecializedScreenRecorder;
 import com.qa.utils.TestUtil;
@@ -51,7 +50,7 @@ public class AppiumEnv {
 	public static AndroidDriver<AndroidElement> driver = null;
 	public static Properties prop;
 	public ScreenRecorder screenRecorder;
-	public static DesiredCapabilities capabilities;
+	public DesiredCapabilities capabilities;
 
 	public AppiumEnv() {
 		String path = System.getProperty("user.dir") + "\\config.properties";
@@ -75,16 +74,16 @@ public class AppiumEnv {
 
 		if (platform.equals("nativeView")) {
 
-			// File file = new
-			// File("D:\\NewDownloads\\apkfiles\\com.whatsapp_v2.19.73-452714_Android-4.0.3.apk");
+			File file = new File("D:\\NewDownloads\\apkfiles\\com.whatsapp_v2.19.73-452714_Android-4.0.3.apk");
 			capabilities = new DesiredCapabilities();
 			capabilities.setCapability(MobileCapabilityType.APPIUM_VERSION, prop.getProperty("appiumVersion"));
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, prop.getProperty("platformVersion"));
 			capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
 			capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, prop.getProperty("automationName"));
 			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, prop.getProperty("deviceName"));
-			// capabilities.setCapability("noReset", true);
-			// capabilities.setCapability("app", file.getAbsolutePath());
+			capabilities.setCapability(MobileCapabilityType.UDID, prop.getProperty("udid"));
+			capabilities.setCapability("noReset", true);
+			capabilities.setCapability("app", file.getAbsolutePath());
 			capabilities.setCapability("appPackage", prop.getProperty("appPackage"));
 			capabilities.setCapability("appActivity", prop.getProperty("appActivity"));
 			try {
@@ -112,8 +111,8 @@ public class AppiumEnv {
 		return driver;
 	}
 
-	//@Parameters({"device","apppackage","activity","version","appiumServer"})
-	//@BeforeClass
+	// @Parameters({"device","apppackage","activity","version","appiumServer"})
+	// @BeforeClass
 	public void deviceSetUp(String device, String apppackage, String activity, String version, String appiumServer)
 			throws InterruptedException, MalformedURLException, InterruptedException {
 
@@ -169,12 +168,12 @@ public class AppiumEnv {
 		File file = new File(path);
 
 		// We can use this code for full screen recording only
-		/*
-		 * Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		 * int width = screenSize.width; int height = screenSize.height;
-		 */
 
-		Rectangle captureSize = new Rectangle(0, 0, 440, 768);
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = screenSize.width;
+		int height = screenSize.height;
+		Rectangle captureSize = new Rectangle(0, 0, width, height);
+		// Rectangle captureSize = new Rectangle(0, 0, 440, 768);
 		GraphicsConfiguration gc = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()
 				.getDefaultConfiguration();
 
