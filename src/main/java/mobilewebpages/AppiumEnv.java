@@ -82,12 +82,12 @@ public class AppiumEnv {
 			capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, prop.getProperty("automationName"));
 			capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, prop.getProperty("deviceName"));
 			capabilities.setCapability(MobileCapabilityType.UDID, prop.getProperty("udid"));
-			capabilities.setCapability("noReset", true);
-			capabilities.setCapability("app", file.getAbsolutePath());
+			capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
+			capabilities.setCapability(MobileCapabilityType.APP, file.getAbsolutePath());
 			capabilities.setCapability("appPackage", prop.getProperty("appPackage"));
 			capabilities.setCapability("appActivity", prop.getProperty("appActivity"));
 			try {
-				driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4725/wd/hub"), capabilities);
+				driver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4726/wd/hub"), capabilities);
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			}

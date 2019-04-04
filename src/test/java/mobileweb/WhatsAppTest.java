@@ -7,6 +7,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import mobilewebpages.AgreeAndContinuePage;
@@ -19,6 +20,9 @@ public class WhatsAppTest extends AppiumEnv {
 	static WhatsAppTest whatsAppTest = new WhatsAppTest();
 	private AgreeAndContinuePage agreeAndContinuePage = null;
 
+	String messageAppPackageName = "com.android.mms";
+    String messageAppActivityName = "com.android.mms.ui.MmsTabActivity";
+    
 	public WhatsAppTest() {
 		super();
 	}
@@ -47,6 +51,10 @@ public class WhatsAppTest extends AppiumEnv {
 		verifyYourPhoneNumberPage = chooseCountryPage.selectCountry("India");
 		verifyYourPhoneNumberPage.fillPhoneNo("9108371221");
 		verifyYourPhoneNumberPage.clickNextButtion();
+		verifyYourPhoneNumberPage.clickOnOkButton();
+		verifyYourPhoneNumberPage.fillOTP("523654");
+		//mobileDriver.startActivity(new Activity(messageAppPackageName, messageAppActivityName));
+		
 	}
 
 	@AfterClass

@@ -23,6 +23,21 @@ public class VerifyYourPhoneNumberPage extends AppiumEnv {
 	@FindBy(id = "com.whatsapp:id/registration_submit")
 	public WebElement nextButton;
 	
+	@FindBy(id = "android:id/button1")
+	public WebElement okButtion;
+	
+	@FindBy(id = "com.whatsapp:id/verify_sms_code_input")
+	public WebElement whatsappOTP;
+	
+	
+	public void fillOTP(String phoneNumber){
+		sendKeys(driver, 10, whatsappOTP,phoneNumber);
+	}
+	
+	public void clickOnOkButton(){
+		click(driver, 10,okButtion);
+		waitForSeconds(6);
+	}
 	
 	public void clickNextButtion(){
 		click(driver, 10,nextButton);
